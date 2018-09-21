@@ -286,7 +286,8 @@
                     "minItems":"1",
                     "maxItems":"3",
                     "items":{  
-                        "type":"float"
+                        "type":"number",
+                        "format": "double"
                     },
                     "x-totvs":[  
                         {  
