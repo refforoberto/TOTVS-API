@@ -388,7 +388,7 @@
                     ]
                 },
                 "groupingDescription":{  
-                    "type":"number",
+                    "type":"string",
                     "description":"Descrição do agrupador do inventário",
                     "x-totvs":[  
                         {  
@@ -398,7 +398,7 @@
                             "required":false,
                             "type":"integer",
                             "length":"200",
-                            "note":"DEscrição do Agrupador do Inventário. Tabela: agrup-invent",
+                            "note":"Descrição do Agrupador do Inventário. Tabela: agrup-invent",
                             "canUpdate":false
                         }
                     ]
