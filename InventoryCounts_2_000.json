@@ -98,7 +98,24 @@
                             "canUpdate":false
                         }
                     ]
+                },
+                "itemDescription":{  
+                    "type":"string",
+                    "description":"Descrição do Item",
+                    "x-totvs":[  
+                        {  
+                            "product":"datasul",
+                            "available":true,
+                            "field":"item.desc-item",
+                            "required":false,
+                            "type":"string",
+                            "length":"60",
+                            "note":"Descrição do Item - TABELA: item.desc-item",
+                            "canUpdate":false
+                        }
+                    ]
                 }
+                
             }
         }
     }
