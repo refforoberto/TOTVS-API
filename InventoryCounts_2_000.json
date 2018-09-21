@@ -193,6 +193,92 @@
                             "canUpdate":false
                         }
                     ]
+                },
+                "warehouseCode":{  
+                    "type":"string",
+                    "description":"Código do Depósito",
+                    "x-totvs":[  
+                        {  
+                            "product":"datasul",
+                            "available":true,
+                            "field":"inventario.cod-depos",
+                            "required":true,
+                            "type":"string",
+                            "length":"3",
+                            "note":"Código do depósito",
+                            "canUpdate":false
+                        }
+                    ]
+                },
+                "warehouseDescription":{  
+                    "type":"string",
+                    "description":"Descrição do Depósito",
+                    "x-totvs":[  
+                        {  
+                            "product":"datasul",
+                            "available":true,
+                            "field":"deposito.nome",
+                            "required":false,
+                            "type":"string",
+                            "length":"40",
+                            "note":"Descrição do depósito. TABELA: deposito.nome",
+                            "canUpdate":false
+                        }
+                    ]
+                },
+                "locationCode":{  
+                    "type":"string",
+                    "description":"Código da localização do material",
+                    "x-totvs":[  
+                        {  
+                            "product":"datasul",
+                            "available":true,
+                            "field":"inventario.cod-localiz",
+                            "required":false,
+                            "type":"string",
+                            "length":"10",
+                            "note":"Código da localização do material",
+                            "canUpdate":false
+                        }
+                    ]
+                },
+                "locationDescription":{  
+                    "type":"string",
+                    "description":"Descrição da localização do material.",
+                    "x-totvs":[  
+                        {  
+                            "product":"datasul",
+                            "available":true,
+                            "field":"localizacao.descricao",
+                            "required":false,
+                            "type":"string",
+                            "length":"30",
+                            "note":"Descrição da localização do material. TABELA: localizacao.descricao",
+                            "canUpdate":false
+                        }
+                    ]
+                },
+                "status":{  
+                    "type":"number",
+                    "description":"Situação (estado) da ficha de inventário",
+                    "enum":[  
+                        "1",
+                        "2",
+                        "3",
+                        "4"
+                    ],
+                    "x-totvs":[  
+                        {  
+                            "product":"datasul",
+                            "available":true,
+                            "field":"inventario.situacao",
+                            "required":false,
+                            "type":"integer",
+                            "length":"1",
+                            "note":"Situação da ficha de contagem. Valores possíveis: 1-Atualizado; 2-Não Atualizado; 3-Inventário OK, 4-OK p/Inventario. Include = ininc/i01in157.i",
+                            "canUpdate":false
+                        }
+                    ]
                 }                
             }
         }
