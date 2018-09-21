@@ -330,10 +330,12 @@
                             "product":"datasul",
                             "available":true,
                             "field":"inventario.qtidade-atu",
+                            "required":false,
                             "length":"15",
                             "type":"decimal",
                             "format":"double",
-                            "note":"Quantidade Atual.  ->>>>,>>>,>>9.9999"
+                            "note":"Quantidade Atual.  ->>>>,>>>,>>9.9999",
+                            "canUpdate":false
                         }
                     ]
                 },
@@ -344,7 +346,9 @@
                         "product":"datasul",
                         "available":true,
                         "field":"inventario.impressa",
-                        "note":"Status de impressão, se a ficha já foi impressa"
+                        "required":false,
+                        "note":"Status de impressão, se a ficha já foi impressa",
+                        "canUpdate":false
                     }
                 },
                 "situationWMS":{  
@@ -355,9 +359,43 @@
                             "product":"datasul",
                             "available":true,
                             "field":"inventario.ind-sit-invent-wm",
+                            "required":false,
                             "length":"9",
                             "format":"integer",
-                            "note":"Situação da ficha no módulo WMS"
+                            "note":"Situação da ficha no módulo WMS",
+                            "canUpdate":false
+                        }
+                    ]
+                },
+                "groupingCode":{  
+                    "type":"number",
+                    "description":"Código do agrupador do inventário",
+                    "x-totvs":[  
+                        {  
+                            "product":"datasul",
+                            "available":true,
+                            "field":"inventario.cdn-agrup",
+                            "required":false,
+                            "type":"integer",
+                            "length":"9",
+                            "note":"Código do Agrupador - Formato: >>>,>>>,>>9",
+                            "canUpdate":false
+                        }
+                    ]
+                },
+                "groupingDescription":{
+                    "type":"number",
+                    "description":"Descrição do agrupador do inventário",
+                    "x-totvs":[  
+                        {  
+                            "product":"datasul",
+                            "available":true,
+                            "field":"agrup-invent.descricao",
+                            "required":false,
+                            "type":"integer",
+                            "length":"200",
+                            "note":"DEscrição do Agrupador do Inventário. Tabela: agrup-invent",
+                            "canUpdate":false
                         }
                     ]
                 }
