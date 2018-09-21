@@ -295,12 +295,12 @@
                             "product":"datasul",
                             "available":true,
                             "field":"inventario.val-apurado[1..3]",
-                            "required":true,
+                            "required":false,
                             "length":"14",
                             "type":"decimal",
                             "format":"double",
                             "note":"Valor apurado. formato >>>>,>>>,>>9.9999. inventario.val-apurado[1..3]. Quando a quantidade ainda não foi apurada o valor padrão é ? (nulo)",
-                            "canUpdate":false
+                            "canUpdate":true
                         }
                     ]
                 }
