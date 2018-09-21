@@ -26,29 +26,29 @@
             ]
         }
     },
-    "definitions":
-        "pagedInventoryCounts": {
-            "type": "object",
-            "allOf": [
-                {
-                    "$ref": "https://raw.githubusercontent.com/totvs/ttalk-standard-message/master/jsonschema/apis/types/totvsApiTypesBase.json#/definitions/Paging"
+    "definitions":{  
+        "pagedInventoryCounts":{  
+            "type":"object",
+            "allOf":[  
+                {  
+                    "$ref":"https://raw.githubusercontent.com/totvs/ttalk-standard-message/master/jsonschema/apis/types/totvsApiTypesBase.json#/definitions/Paging"
                 },
-                {
-                    "type": "object",
-                    "properties": {
-                        "items": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/inventoryCountType"
+                {  
+                    "type":"object",
+                    "properties":{  
+                        "items":{  
+                            "type":"array",
+                            "items":{  
+                                "$ref":"#/definitions/inventoryCountType"
                             }
                         }
                     }
                 }
             ]
         },
-        "inventoryCountType":{
+        "inventoryCountType":{  
             "type":"object",
-            "example": 1
+            "example":1,
             "properties":{  
                 "countingSheetNumber":{  
                     "type":"number",
@@ -87,7 +87,7 @@
                 "itemCode":{  
                     "type":"string",
                     "description":"Código do Item",
-                    "example": "item"
+                    "example":"item",
                     "x-totvs":[  
                         {  
                             "product":"datasul",
@@ -104,7 +104,7 @@
                 "itemDescription":{  
                     "type":"string",
                     "description":"Descrição do Item",
-                     "example": "descrição",
+                    "example":"descrição",
                     "x-totvs":[  
                         {  
                             "product":"datasul",
@@ -121,7 +121,7 @@
                 "lotOrSerialNumber":{  
                     "type":"string",
                     "description":"Código do Lote ou Número de Série do Item",
-                     "example": "lote",
+                    "example":"lote",
                     "x-totvs":[  
                         {  
                             "product":"datasul",
@@ -138,7 +138,7 @@
                 "referenceCode":{  
                     "type":"string",
                     "description":"Código da Referência do Item",
-                     "example": "refer",
+                    "example":"refer",
                     "x-totvs":[  
                         {  
                             "product":"datasul",
