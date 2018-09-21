@@ -285,10 +285,10 @@
                     "description":"Quantidade contada durante o inventário",
                     "minItems":"1",
                     "maxItems":"3",
-                    "example":"[1, null, null]",
                     "items":{  
                         "type":"number",
-                        "format":"double"
+                        "format":"double",
+                        "example":[1, null, null]
                     },
                     "x-totvs":[  
                         {  
