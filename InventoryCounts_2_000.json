@@ -98,7 +98,8 @@
                             "canUpdate":false
                         }
                     ]
-                }"itemDescription":{  
+                },
+                "itemDescription":{  
                     "type":"string",
                     "description":"Descrição do Item",
                     "x-totvs":[  
