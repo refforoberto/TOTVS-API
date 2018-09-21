@@ -1,0 +1,495 @@
+{
+    "$schema": "https://raw.githubusercontent.com/totvs/ttalk-standard-message/master/jsonschema/schemas/events/User_1_000.json#",
+  
+    "info": {
+        "description": "Contrato de Mensagem Padronizada para Inventário de Estoque para produtos TOTVS",
+        "version": "2.000",
+        "title": "Inventory Counts",
+        "contact": {
+            "name": "T-Talk",
+            "url": "API.Totvs.com.br",
+            "email": "comiteintegracao@totvs.com.br"
+        },
+        "x-totvs": {
+            "messageDocumentation": {
+                "name": "InventoryCounts",
+                "description": "Inventário Estoque",
+                "segment": "Manufatura"
+            },
+            "productInformation": [
+                {
+                    "product": "datasul",
+                    "contact": "SUPPLY.ML.MAN.ESTOQUE@totvs.com.br",
+                    "description": "Atualização Fichas Inventário",
+                    "adapter": "/totvs-rest/prg/mat/v1/inventoryCounts.p",
+                    "helpUrl": ""
+                }
+            ]
+        }
+    },
+
+    "definitions": {
+        "inventory": {
+            "type": "object",
+            "properties":{
+                "countingSheetNumber": {
+                   "type": "number",
+                   "description": "Número da ficha de inventário",
+                   "x-totvs": [
+                       {
+                         "product": "datasul",
+                         "available": true,
+                         "field": "inventario.nr-ficha",
+                         "required": true,
+                         "length": "7",
+                         "type": "integer",
+                         "note": "Número da ficha de inventário | formato >>>>,>>9"
+                       }
+                    ]
+                },
+                "inventoryDate": {
+                   "type": "string",
+                   "format": "date",
+                   "description": "Data de inventário",
+                   "x-totvs": [
+                       {
+                           "product": "datasul",
+                           "available": true,
+                           "field": "inventario.dt-saldo",
+                           "required": true,
+                           "type": "date",
+                           "length": "99/99/9999",
+                           "note": "Data de corte do inventário"
+                       }
+                   ]
+                },
+                "item":{
+                    "type": "object",
+                    "description": "Informações do Item",
+                    "properties": {
+                        "itemCode":{
+                            "type": "string",
+                            "description": "Código do Item",
+                            "x-totvs": [
+                                {
+                                    "product": "datasul",
+                                    "available": true,
+                                    "field": "inventario.it-codigo",
+                                    "required": true,
+                                    "type": "string",
+                                    "length": "16",
+                                    "note": "Código do Item"
+                                }
+                            ]
+                        },
+                        "itemDescription":{
+                            "type": "string",
+                            "description": "Descrição do Item",
+                            "x-totvs": [
+                                {
+                                    "product": "datasul",
+                                    "available": true,
+                                    "field": "item.desc-item",
+                                    "required": false,
+                                    "type": "string",
+                                    "length": "60",
+                                    "note": "Descrição do Item - TABELA: item"
+                                }
+                            ]
+                        },
+                        "reference": {
+                            "type": "object",
+                            "description": "Referência do Item",
+                            "x-totvs": [
+                                {
+                                    "product": "datasul",
+                                    "note": "Obrigatória para itens controlados por refêrencia."
+                                }
+                            ],
+                            "properties": {
+                                "referenceCode": {
+                                    "type": "string",
+                                    "description": "Código da Referência do Item",
+                                    "x-totvs": [
+                                        {
+                                            "product": "datasul",
+                                            "available": true,
+                                            "field": "inventario.cod-refer",
+                                            "type": "string",
+                                            "length": "8",
+                                            "note": "Código da Referência do Item"
+                                        }
+                                    ]
+                                },
+                                "referenceDescription": {
+                                    "type": "string",
+                                    "description": "Descrição da Referência do Item",
+                                    "x-totvs": [
+                                        {
+                                            "product": "datasul",
+                                            "available": true,
+                                            "field": "referencia.descricao",
+                                            "type": "string",
+                                            "length": "8",
+                                            "note": "Descrição da Referência do Item. TABELA: referencia"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "location": {
+                    "type": "object",
+                    "description":"Informações da localização física",
+                    "properties": {
+                        "site":{
+                            "type": "object",
+                            "description":"Estabelecimento",
+                            "properties":{
+                                "siteCode": {
+                                    "type":"string",
+                                    "description": "Código do Estabelecimento",
+                                    "x-totvs": [
+                                        {
+                                             "product": "datasul",
+                                             "available": true,
+                                             "field": "inventario.cod-estabel",
+                                             "required": true,
+                                             "type": "string",
+                                             "length": "5",
+                                             "note": "Código Estabelecimento"
+                                        }
+                                    ]
+                                },
+                                "siteDescription": {
+                                    "type":"string",
+                                    "description": "Descrição do Estabelecimento",
+                                    "x-totvs": [
+                                        {
+                                             "product": "datasul",
+                                             "available": true,
+                                             "field": "estabelec.nome",
+                                             "type": "string",
+                                             "length": "40",
+                                             "note": "Descrição do estabelecimento. TABELA: estabelec"
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        "warehouse": {
+                            "type": "object",
+                            "description":"Depósito",
+                            "properties":{
+                                "warehouseCode": {
+                                    "type":"string",
+                                    "description": "Código do Depósito",
+                                    "x-totvs": [
+                                        {
+                                             "product": "datasul",
+                                             "available": true,
+                                             "field": "inventario.cod-depos",
+                                             "required": true,
+                                             "type": "string",
+                                             "length": "3",
+                                             "note": "Código do depósito"
+                                        }
+                                    ]
+                                },
+                                "warehouseDescription": {
+                                    "type":"string",
+                                    "description": "Descrição do Depósito",
+                                    "x-totvs": [
+                                        {
+                                             "product": "datasul",
+                                             "available": true,
+                                             "field": "deposito.nome",
+                                             "type": "string",
+                                             "length": "40",
+                                             "note": "Descrição do depósito. TABELA: deposito"
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        "binLocation": {
+                            "type":"object",
+                            "description":"Localização do material dentro do depósito",
+                            "properties": {
+                                "binLocationCode": {
+                                    "type":"string",
+                                    "description": "Código da localização do material",
+                                    "x-totvs": [
+                                        {
+                                             "product": "datasul",
+                                             "available": true,
+                                             "field": "inventario.cod-localiz",
+                                             "required": true,
+                                             "type": "string",
+                                             "length": "10",
+                                             "note": "Código da localização do material"
+                                        }
+                                    ]
+                                },
+                                "binLocationDescription": {
+                                    "type":"string",
+                                    "description": "Descrição da localização do material.",
+                                    "x-totvs": [
+                                        {
+                                             "product": "datasul",
+                                             "available": true,
+                                             "field": "localizacao.descricao",
+                                             "type": "string",
+                                             "length": "30",
+                                             "note": "Descrição da localização do material. TABELA: localizacao"
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        "lotOrSerialNumber": {
+                            "type": "string",
+                            "description": "Código do Lote ou Número de Série do Item",
+                            "x-totvs":[
+                                {
+                                    "product": "datasul",
+                                    "available": true,
+                                    "field": "inventario.lote",
+                                    "required": false,
+                                    "type": "string",
+                                    "length": "40",
+                                    "note": "Número do lote ou número de série do item. Elemento obigatório para itens controlados por lote, referencia ou número de série."
+                                }
+                            ]
+                        }
+                    }
+                },
+                "status": {
+                    "type": "number",
+                    "description": "Situação (estado) da ficha de inventário",
+                    "enum": [
+                        "1",
+                        "2",
+                        "3",
+                        "4"
+                    ],
+                    "x-totvs":[
+                        {
+                          "product": "datasul",
+                          "available": true,
+                          "field": "inventario.situacao",
+                          "type": "integer",
+                          "length": "9",
+                          "note": "Situação da ficha de contagem. Valores possíveis: 1-Atualizado; 2-Não Atualizado; 3-Inventário OK, 4-OK p/Inventario. Include = ininc/i01in157.i"                          
+                        }
+                    ]
+                },
+                "counts": {
+                    "type": "array",
+                    "description": "Contagens do inventário",
+                    "items":{
+                        "type": "object",
+                        "properties": {
+                            "sequence": {
+                                "type": "number",
+                                "description": "Identificador sequencial da contagem",
+                                "minLength": 1,
+                                "maxLength": 3,
+                                "x-totvs":[
+                                    {
+                                        "product": "datasul",
+                                        "available": true
+                                    }
+                                ]
+                            },
+                            "quantity": {
+                                "type": "number",
+                                "description":"Quantidade da contagem",
+                                "x-totvs":[
+                                    {
+                                         "product": "datasul",
+                                         "available": true,
+                                         "field": "inventario.val-apurado[1..3]",
+                                         "required": true,
+                                         "length": "14",
+                                         "type": "decimal",
+                                         "format": "double",
+                                         "note": "Valor apurado. formato >>>>,>>>,>>9.9999. inventario.val-apurado[sequence]"
+                                    }
+                                ]
+                            },
+                            "lecturerUser": {
+                                "type": "string",
+                                "description":"Conferente da contagem.",
+                                "x-totvs":[
+                                    {
+                                         "product": "datasul",
+                                         "available": true,
+                                         "field":"inventario.cod-confte-contag-1,inventario.cod-confte-contag-2,inventario.cod-confte-contag-3",
+                                         "length": "14",
+                                         "type": "decimal",
+                                         "format": "double",
+                                         "note": "Conferente da contagem. inventario.cod-confte-contag-<sequence>"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "updateDate":{
+                    "type": "string",
+                    "description": "Data atualização",
+                    "format": "date",
+                    "x-totvs": [
+                        {
+                            "product": "datasul",
+                            "available": true,
+                            "field": "inventario.dt-atualiza",
+                            "type": "date",
+                            "length": "99/99/9999",
+                            "note": "Data de atualização do inventário",
+                            "canUpdate": true
+                        }
+                    ]
+                },
+                "lastEntryDate":{
+                    "type": "string",
+                    "description": "Data da ultima entrada.",
+                    "format": "date",
+                    "x-totvs": [
+                        {
+                            "product": "datasul",
+                            "available": true,
+                            "field": "inventario.dt-ult-entra",
+                            "type": "date",
+                            "length": "99/99/9999",
+                            "note": "Data da ultima entrada",
+                            "canUpdate": true
+                        }
+                    ]
+                },
+                "lastOutputDate":{
+                    "type": "string",
+                    "description": "Data da ultima saída",
+                    "format": "date",
+                    "x-totvs": [
+                        {
+                            "product": "datasul",
+                            "available": true,
+                            "field": "inventario.dt-ult-saida",
+                            "type": "date",
+                            "length": "99/99/9999",
+                            "note": "Data da ultima saída",
+                            "canUpdate": true
+                        }
+                    ]
+                },
+                "currentQuantity":{
+                    "type": "number",
+                    "description":"Quantidade Atual",
+                    "x-totvs":[
+                        {
+                             "product": "datasul",
+                             "available": true,
+                             "field": "inventario.qtidade-atu",
+                             "length": "15",
+                             "type": "decimal",
+                             "format": "double",
+                             "note": "Quantidade Atual.  ->>>>,>>>,>>9.9999"
+                        }
+                    ]
+                },
+                "printStatus": {
+                    "type": "boolean",
+                     "description": "Status de impressão",
+                     "x-totvs": {
+                         "product": "datasul",
+                         "available": true,
+                         "field": "inventario.impressa",
+                         "note": "Status de impressão, se a ficha já foi impressa"
+                     }
+                },
+                "situationWMS": {
+                    "type":"number",
+                    "description":"Situação da ficha no módulo WMS",
+                    "x-totvs":[
+                        {
+                             "product": "datasul",
+                             "available": true,
+                             "field": "inventario.ind-sit-invent-wm",
+                             "length": "9",
+                             "format": "integer",
+                             "note": "Situação da ficha no módulo WMS"
+                        }
+                    ]
+                },
+                "grouping": {
+                    "type":"object",
+                    "description": "Agrupador do Inventário",
+                    "properties": {
+                        "groupingCode": {
+                            "type":"number",
+                            "description": "Código do agrupador do inventário",
+                            "x-totvs": [
+                                {
+                                    "product": "datasul",
+                                    "available": true,
+                                    "field": "inventario.cdn-agrup",
+                                    "type": "integer",
+                                    "length": "9",
+                                    "note": "Código do Agrupador - Formato: >>>,>>>,>>9"
+                                }
+                            ]
+                        },
+                        "groupingDescription": {
+                            "type":"number",
+                            "description": "Descrição do agrupador do inventário",
+                            "x-totvs": [
+                                {
+                                    "product": "datasul",
+                                    "available": true,
+                                    "field": "agrup-invent.descricao",
+                                    "type": "integer",
+                                    "length": "200",
+                                    "note": "DEscrição do Agrupador do Inventário. Tabela: agrup-invent"
+                                }
+                            ]
+                        }
+                    }
+                },
+                "balanceAccounting": {
+                    "type": "number",
+                    "description":"Saldo contábil",
+                    "x-totvs":[                
+                        {                
+                             "product": "datasul",
+                             "available": true,
+                             "field": "inventario.valor-contab",
+                             "required": true,
+                             "length": "15",
+                             "type": "decimal",
+                             "format": "double",
+                             "note": "Saldo contábil. formato >>>>,>>>,>>9.9999"
+                        }                
+                    ]                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,77 @@
+InventoryCountingQuery_208_000.xsd
+
+ListOfCountingSheets
+    TransactionType
+        CountingSheetNumber
+        InventoryDate
+    Item
+        ItemCode
+        ItemDescription
+        Reference
+            ReferenceCode
+            ReferenceDescription
+    Location        
+        Site
+            SiteID
+            SiteDescription
+        Warehouse
+            WarehouseID
+            WarehouseDescription
+        BinLocation
+            BinLocationID
+            BinLocationDescription
+        LotOrSerialNumber
+    BalanceAccounting
+    Situation
+    Counts
+        Count
+            Sequence
+            Quantity
+            LecturerUser
+    UpdateDate
+    LastEntryDate
+    LastOutputDate
+    CurrentQuantity
+    FinalQuantity
+    CostingValues
+        ListOfBatchAverageValues
+            BatchValues
+                Sequence
+                MaterialValue
+                LaborValue
+                OverHeadValue
+        ListOfOnLineAverageValues
+            OnLineValues
+                Sequence
+                MaterialValue
+                LaborValue
+                OverHeadValue
+        ListOfStandardCostValues
+            StandardValues
+                Sequence
+                MaterialValue
+                LaborValue
+                OverHeadValue
+    PrintStatus
+    SituationWMS
+    
+    
+    
+    
+    
+PARAMETROS
+    Parameters
+        Site
+        InventoryDate
+        LecturerUser
+        Warehouse
+        InitialWarehouseID
+        FinalWarehouseID
+        BinLocation
+            InitialBinLocationID
+            FinalBinLocationID
+        Lot
+        ItemCode
+        CountingSheetNumber
+            InitialCountingSheetNumber
+            FinalCountingSheetNumber

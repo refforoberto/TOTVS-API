@@ -1,0 +1,338 @@
+
+
+============================================================================
+=============================== Table: inventario ==========================
+
+ Table Flags: "f"=frozen, "s"=a SQL table
+
+
+Table                            Table Field Index Table
+Name                             Flags Count Count Label
+-------------------------------- ----- ----- ----- ------------------------
+inventario                                42     5 Inventário
+
+    Dump Name: in157
+  Description: Arquivo de Inventario
+ Storage Area: Schema Area
+
+       Trigger Event Trigger Procedure    Overridable? Check CRC?
+       ------------- -------------------- ------------ ----------
+       Create        database/tgin/tcp/tc yes          no
+       Delete        database/tgin/tdp/td yes          no
+       Write         database/tgin/twp/tw yes          no
+
+
+=============================== FIELD SUMMARY ==============================
+=============================== Table: inventario ==========================
+
+Flags: <c>ase sensitive, <i>ndex component, <m>andatory, <v>iew component
+
+Order Field Name                       Data Type   Flags
+----- -------------------------------- ----------- -----
+   10 it-codigo                        char        im
+   20 cod-estabel                      char        im
+   30 cod-depos                        char        im
+   32 lote                             char        im
+   40 qtidade-atu                      deci-4      m
+   50 dt-saldo                         date        im
+   60 dt-ult-entra                     date
+   70 dt-ult-saida                     date
+   80 valor-final                      deci-4      m
+   90 valor-contab                     deci-4      m
+  120 val-apurado                      deci-4[3]
+  130 situacao                         inte        m
+  160 dt-atualiza                      date
+  170 nr-ficha                         inte        im
+  240 cod-localiz                      char        im
+  250 valor-mat-p                      deci-4[3]
+  260 valor-mat-o                      deci-4[3]
+  270 valor-mat-m                      deci-4[3]
+  280 valor-mob-m                      deci-4[3]
+  290 valor-mob-o                      deci-4[3]
+  300 valor-mob-p                      deci-4[3]
+  310 valor-ggf-p                      deci-4[3]
+  320 valor-ggf-m                      deci-4[3]
+  330 valor-ggf-o                      deci-4[3]
+  340 char-1                           char
+  350 char-2                           char
+  360 dec-1                            deci-8
+  370 dec-2                            deci-8
+  380 int-1                            inte
+  390 int-2                            inte
+  400 log-1                            logi
+  410 log-2                            logi
+  420 data-1                           date
+  430 data-2                           date
+  440 check-sum                        char
+  450 impressa                         logi        m
+  460 cod-refer                        char        im
+  470 ind-sit-invent-wms               inte
+  480 cod-confte-contag-1              char
+  490 cod-confte-contag-2              char
+  500 cod-confte-contag-3              char
+  510 cdn-agrup                        inte        i
+
+Field Name                       Format
+-------------------------------- -----------------------------
+it-codigo                        x(16)
+cod-estabel                      x(5)
+cod-depos                        x(3)
+lote                             x(40)
+qtidade-atu                      ->>>>,>>>,>>9.9999
+dt-saldo                         99/99/9999
+dt-ult-entra                     99/99/9999
+dt-ult-saida                     99/99/9999
+valor-final                      ->>>>,>>>,>>9.9999
+valor-contab                     >>>>,>>>,>>9.9999
+val-apurado                      >>>>,>>>,>>9.9999
+situacao                         >9
+dt-atualiza                      99/99/9999
+nr-ficha                         >>>>,>>9
+cod-localiz                      x(20)
+valor-mat-p                      >>>>,>>>,>>9.9999
+valor-mat-o                      >>>>,>>>,>>9.9999
+valor-mat-m                      >>>>,>>>,>>9.9999
+valor-mob-m                      >>>>,>>>,>>9.9999
+valor-mob-o                      >>>>,>>>,>>9.9999
+valor-mob-p                      >>>>,>>>,>>9.9999
+valor-ggf-p                      >>>>,>>>,>>9.9999
+valor-ggf-m                      >>>>,>>>,>>9.9999
+valor-ggf-o                      >>>>,>>>,>>9.9999
+char-1                           x(100)
+char-2                           x(100)
+dec-1                            ->>>>>>>>>>>9.99999999
+dec-2                            ->>>>>>>>>>>9.99999999
+int-1                            ->>>>>>>>>9
+int-2                            ->>>>>>>>>9
+log-1                            Sim/Não
+log-2                            Sim/Não
+data-1                           99/99/9999
+data-2                           99/99/9999
+check-sum                        x(20)
+impressa                         Sim/Não
+cod-refer                        X(8)
+ind-sit-invent-wms               9
+cod-confte-contag-1              x(30)
+cod-confte-contag-2              x(30)
+cod-confte-contag-3              x(30)
+cdn-agrup                        >>>,>>>,>>9
+
+Field Name                       Initial
+-------------------------------- -----------------------------
+it-codigo
+cod-estabel
+cod-depos
+lote
+qtidade-atu                      0
+dt-saldo                         today
+dt-ult-entra                     ?
+dt-ult-saida                     ?
+valor-final                      0
+valor-contab                     0
+val-apurado                      ?
+situacao                         1
+dt-atualiza                      ?
+nr-ficha                         0
+cod-localiz
+valor-mat-p                      0
+valor-mat-o                      0
+valor-mat-m                      0
+valor-mob-m                      0
+valor-mob-o                      0
+valor-mob-p                      0
+valor-ggf-p                      0
+valor-ggf-m                      0
+valor-ggf-o                      0
+char-1
+char-2
+dec-1                            0
+dec-2                            0
+int-1                            0
+int-2                            0
+log-1                            no
+log-2                            no
+data-1                           ?
+data-2                           ?
+check-sum
+impressa                         No
+cod-refer
+ind-sit-invent-wms               1
+cod-confte-contag-1
+cod-confte-contag-2
+cod-confte-contag-3
+cdn-agrup                        0
+
+Field Name                     Label                  Column Label
+------------------------------ ---------------------- ----------------------
+it-codigo                      Item                   Item
+cod-estabel                    Estabelecimento        Est
+cod-depos                      Depósito               Dep
+lote                           Lote/Série             Lote/Série
+qtidade-atu                    Qtde Atual             Qtde Atual
+dt-saldo                       Data Saldo Inventariar Saldo Invent
+dt-ult-entra                   Data Ultima Entrada    Ult Entrad
+dt-ult-saida                   Data Ultima Saída      Ult Saída
+valor-final                    Qtde Final             Qtde Fim
+valor-contab                   Valor Contábil         Vlr Contabil
+val-apurado                    Valor Apurado          Vlr Apurado
+situacao                       Situação Inventario    St
+dt-atualiza                    Data Atualização       Atualização
+nr-ficha                       Ficha                  Ficha
+cod-localiz                    Localização            Localiz
+valor-mat-p                    Valor Mat Padrão       Mat Padrão
+valor-mat-o                    Valor Mat On-line      Mat On-line
+valor-mat-m                    Valor Mat Batch        Mat Batch
+valor-mob-m                    Valor Mob Batch        Mob Batch
+valor-mob-o                    Valor Mob On-line      Mob On-line
+valor-mob-p                    Valor Mob Padrão       Mob Padrão
+valor-ggf-p                    Valor GGF Padrão       GGF Padrão
+valor-ggf-m                    Valor GGF Batch        GGF Batch
+valor-ggf-o                    Valor GGF On-line      GGF On-line
+char-1                         ?                      ?
+char-2                         ?                      ?
+dec-1                          ?                      ?
+dec-2                          ?                      ?
+int-1                          ?                      ?
+int-2                          ?                      ?
+log-1                          ?                      ?
+log-2                          ?                      ?
+data-1                         ?                      ?
+data-2                         ?                      ?
+check-sum                      Check-sum              ?
+impressa                       Impressão              Impressão
+cod-refer                      Referência             Ref
+ind-sit-invent-wms             Situacao Inventario Wm Situacao Inventario
+cod-confte-contag-1            Conferente contagem 1  Conferente 1
+cod-confte-contag-2            Conferente contagem 2  Conferente 2
+cod-confte-contag-3            Conferente contagem 3  Conferente 3
+cdn-agrup                      Cód Agrupador          Cód Agrupador
+
+
+=============================== INDEX SUMMARY ==============================
+=============================== Table: inventario ==========================
+
+Flags: <p>rimary, <u>nique, <w>ord, <a>bbreviated, <i>nactive, + asc, - desc
+
+
+Flags Index Name                       Cnt Field Name
+----- -------------------------------- --- ---------------------------------
+      agrupador                          1 + cdn-agrup
+
+pu    data-invent                        7 + dt-saldo
+                                           + cod-estabel
+                                           + cod-depos
+                                           + cod-localiz
+                                           + lote
+                                           + cod-refer
+                                           + it-codigo
+
+      data-item-dep                      3 + dt-saldo
+                                           + it-codigo
+                                           + cod-depos
+
+a     item                               3 + it-codigo
+                                           + cod-estabel
+                                           + cod-depos
+
+      nr-ficha                           2 + dt-saldo
+                                           + nr-ficha
+
+** Index Name: agrupador
+ Storage Area: Schema Area
+** Index Name: data-invent
+ Storage Area: Schema Area
+** Index Name: data-item-dep
+ Storage Area: Schema Area
+** Index Name: item
+ Storage Area: Schema Area
+** Index Name: nr-ficha
+ Storage Area: Schema Area
+
+
+=============================== FIELD DETAILS ==============================
+=============================== Table: inventario ==========================
+
+** Field Name: it-codigo
+      Val-Msg: Código do Item não pode iniciar com branco
+      Val-Exp: substring (it-codigo,1,1) <> ""
+
+** Field Name: cod-estabel
+      Val-Msg: Estabelecimento não pode iniciar com brancos.
+      Val-Exp: substring (cod-estabel,1,1)  <> ""
+
+** Field Name: cod-depos
+      Val-Msg: Depósito inexistente.
+      Val-Exp: can-find(deposito of inventario)
+
+** Field Name: lote
+         Help: Lote, Serie ou Numero de Serie
+
+** Field Name: val-apurado
+      Val-Msg: Valor Apurado deve ser maior que Zero.
+      Val-Exp: val-apurado > 0
+
+** Field Name: situacao
+         Help: Situação do Inventario
+
+** Field Name: nr-ficha
+         Help: Informe o numero da ficha de inventario
+
+** Field Name: cod-localiz
+  Description: Código da localização do material
+
+** Field Name: valor-mat-p
+         Help: Valor Material Padrão
+
+** Field Name: valor-mat-o
+         Help: Valor Material On-line
+
+** Field Name: valor-mat-m
+         Help: Valor Material Batch
+
+** Field Name: valor-mob-m
+         Help: Valor Mão-de-obra Batch
+
+** Field Name: valor-mob-o
+         Help: Valor Mão-de-obra On-line
+
+** Field Name: valor-mob-p
+         Help: Valor Mão-de-obra Padrão
+
+** Field Name: valor-ggf-p
+         Help: Valor do GGF Padrão
+
+** Field Name: valor-ggf-m
+         Help: Valor do GGF Batch
+
+** Field Name: valor-ggf-o
+         Help: Valor do GGF On-line
+
+** Field Name: impressa
+         Help: Indicar o Estado da Ficha de Inventario(Impressa/ Não
+               Impressa)
+
+** Field Name: cod-refer
+  Description: Código da referência - Prod acabados com controle de
+               estoque por refer
+
+** Field Name: ind-sit-invent-wms
+  Description: Situacao Inventario WMS
+         Help: Situacao Inventario WMS
+
+** Field Name: cod-confte-contag-1
+  Description: Código conferente contagem 1
+         Help: Código conferente contagem 1
+
+** Field Name: cod-confte-contag-2
+  Description: Código conferente contagem 2
+         Help: Código conferente contagem 2
+
+** Field Name: cod-confte-contag-3
+  Description: Código conferente contagem 3
+         Help: Código conferente contagem 3
+
+** Field Name: cdn-agrup
+  Description: Código Agrupador Inventário
+         Help: Código do agrupador de inventário
+
+

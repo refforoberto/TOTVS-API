@@ -1,0 +1,77 @@
+{
+    "CountingSheetNumber": "number",
+    "InventoryDate": "date",
+    "Item": {
+        "ItemCode": "string",
+        "ItemDescription": "string",
+        "Reference": {
+            "ReferenceCode": "string",
+            "ReferenceDescription": "string"
+        },
+        "LotOrSerialNumber": "string"
+    },
+    "Location": {
+        "Site": {
+            "SiteID": "string",
+            "SiteDescription": "string"
+        },
+        "Warehouse": {
+            "WarehouseID": "string",
+            "WarehouseDescription": "string"
+        },
+        "BinLocation": {
+            "BinLocationID": "string",
+            "BinLocationDescription": "string"
+        }        
+    },
+    "BalanceAccounting": "decimal",
+    "Situation": "number",
+    "Counts":[
+        "Count": {
+            "Sequence":"number",
+            "Quantity": "decimal",
+            "LecturerUser":"string"
+        }        
+    ],
+    "UpdateDate": "date",
+    "******LastEntryDate": "date",
+    "******LastOutputDate": "date",
+    "CurrentQuantity": "decimal",
+    "FinalQuantity": "decimal",
+    "*******CostingValues": {
+        "ListOfBatchAverageValues": {
+            "BatchValues": [
+                "Sequence": "number",
+                "MaterialValue": "decimal"
+                "LaborValue": "decimal"
+                "OverHeadValue": "decimal"
+            ]
+        },
+        "ListOfOnLineAverageValues": {
+            "OnLineValues": [
+                "Sequence": "number",
+                "MaterialValue": "decimal"
+                "LaborValue": "decimal"
+                "OverHeadValue": "decimal"
+            ]
+        },
+        "ListOfStandardCostValues": {
+            "StandardValues": [
+                "Sequence": "number",
+                "MaterialValue": "decimal"
+                "LaborValue": "decimal"
+                "OverHeadValue": "decimal"
+            ]
+        },        
+    },
+    "PrintStatus": "number",
+    "SituationWMS": "number",
+    "groupingCode": "string"
+}
+
+
+
+
+
+
+           

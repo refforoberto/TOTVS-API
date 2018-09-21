@@ -1,0 +1,511 @@
+﻿{
+  "openapi": "3.0.1",
+  "servers": [
+    {
+      "description": "API para a entidade objeto de Inventário de Estoque para produtos TOTVS",
+      "url": "API.totvs.com.br"
+    }
+  ],
+  "info": {
+    "description": "AzPI para a entidade objeto de Inventário de Estoque para produtos TOTVS",
+    "version": "2.000",
+    "title": "Inventory Counts",
+    "contact": {
+      "name": "T-Talk",
+      "url": "API.Totvs.com.br",
+      "email": "comiteintegracao@totvs.com.br"
+    },
+    "x-totvs": {
+      "messageDocumentation": {
+        "name": "InventoryCounts",
+        "description": "Inventário Estoque",
+        "segment": "Manufatura"
+      },
+      "productInformation": [
+        {
+          "product": "datasul",
+          "contact": "SUPPLY.ML.MAN.ESTOQUE@totvs.com.br",
+          "description": "Atualização Fichas Inventário",
+          "adapter": "mat/api/v1/inventoryCounts.p",
+          "helpUrl": ""
+        }
+      ]
+    }
+  },
+  "paths": {
+    "/inventoryCounts": {
+      "get": {
+        "tags": [
+          "inventory Counts"
+        ],
+        "summary": "Retorna lista de fichas de inventário",
+        "description": "Retorna uma lista de fichas de inventário",
+        "operationId": "getInventoryCounts",
+        "parameters": [
+          {
+            "name": "search",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "ID da ficha de inventário a ser consultada"
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Ordena a busca com base na chave solicitada"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "schema": {
+              "type": "number"
+            },
+            "description": "O tamanho das páginas que precisam ser buscadas. Exemplo: pageSize=5. Valor Padrão=20"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "number"
+            },
+            "description": "Busca a página solicitada. *Necessário informar o tamanho da página. Exemplo: pageSize=5&page=1. Valor Padrão=1"
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Retorna json com os campos solicitados. Exemplo: fields=Code,Type,IsSetup,ProductionAreaCode."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operação realizada com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/inventory"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Mensagem RowErrors Datasul"
+          }
+        },
+        "x-totvs": {
+          "productInformation": [
+            {
+              "product": "datasul",
+              "available": true,
+              "note": "Este verbo esta disponivel com todos os parâmetros",
+              "minimalVersion": "12.1.23"
+            }
+          ]
+        }
+      },
+      "post": {
+        "tags": [
+          "inventory Counts"
+        ],
+        "summary": "Cria ficha(s) de inventário",
+        "x-totvs": {
+          "productInformation": [
+            {
+              "product": "datasul",
+              "available": true,
+              "note": "Este verbo esta disponivel com todos os parâmetros",
+              "minimalVersion": "12.1.23"
+            }
+          ]
+        },
+        "description": "Geração de uma ou mais fichas inventário. Informar a  quantidade apurada na primeira contagem. A atualização da segunda/terceira contagem deve ser enviado via método PUT",
+        "operationId": "postInventoryCounts",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/inventory"
+              }
+            }
+          },
+          "description": "Informações do objeto ficha de inventário"
+        },
+        "responses": {
+          "200": {
+            "description": "Operação realizada com sucesso"
+          },
+          "400": {
+            "description": "Erro ao gerar ficha(s) de inventário",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorModel"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "inventory Counts"
+        ],
+        "summary": "Atualiza ficha(s) de inventário",
+        "description": "Método responsável pela atualização das quantidades apuradas na ficha de inventário. Caso ainda não exista a ficha no sistema, deve ser previamente criada por meio do método POST",
+        "operationId": "putInventoryCounts",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/inventory"
+              }
+            }
+          },
+          "description": "Informações do objeto de fichas de inventário"
+        },
+        "responses": {
+          "200": {
+            "description": "Operação realizada com sucesso"
+          },
+          "404": {
+            "description": "ID da ficha de inventário nao encontrado"
+          },
+          "500": {
+            "description": "Mensagem RowErrors Datasul"
+          }
+        },
+        "x-totvs": {
+          "productInformation": [
+            {
+              "product": "datasul",
+              "available": true,
+              "note": "Este verbo esta disponível com todos os parâmetros",
+              "minimalVersion": "12.1.23"
+            }
+          ]
+        }
+      }
+    },
+    "/inventoryCounts/{id}/{balanceDate}": {
+      "get": {
+        "tags": [
+          "inventory Counts"
+        ],
+        "summary": "Retorna uma única ficha de inventário pelo número",
+        "description": "Retorna uma ficha de inventário correspondente ao número informado",
+        "operationId": "getInventoryId",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          },
+          {
+            "$ref": "#/components/parameters/balanceDate"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operação realizada com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/inventory"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Mensagem RowErrors Datasul"
+          }
+        },
+        "x-totvs": {
+          "productInformation": [
+            {
+              "product": "datasul",
+              "available": true,
+              "note": "Este verbo esta disponível com todos os parâmetros",
+              "minimalVersion": "12.1.22"
+            }
+          ]
+        }
+      },
+      "delete": {
+        "tags": [
+          "inventory Counts"
+        ],
+        "summary": "Elimina ficha de inventário",
+        "description": "Elimina a ficha de inventário pelo número e data de saldo",
+        "operationId": "deleteInventoryId",
+        "x-totvs": {
+          "productInformation": {
+            "product": "datasul",
+            "available": true,
+            "note": "Este verbo esta disponivel com todos os parâmetros",
+            "minimalVersion": "12.1.23"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          },
+          {
+            "$ref": "#/components/parameters/balanceDate"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operação realizada com sucesso"
+          },
+          "404": {
+            "description": "Ficha inventário não localizado na base",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorModel"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "parameters": {
+      "id": {
+        "name": "id",
+        "in": "path",
+        "required": true,
+        "description": "Número da ficha de contagem",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "balanceDate": {
+        "name": "balanceDate",
+        "in": "path",
+        "required": true,
+        "description": "Data que o estoque está sendo contado",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "numOfCount": {
+        "name": "NumOfCount",
+        "in": "path",
+        "required": true,
+        "description": "Número da contagem",
+        "schema": {
+          "type": "integer"
+        }
+      }
+    },
+    "schemas": {
+      "inventory": {
+        "type": "object",
+        "required": [
+          "Id",
+          "ItemCode",
+          "SiteCode",
+          "WharehouseCode",
+          "BalanceDate",
+          "CountedValue"
+        ],
+        "properties": {
+          "id": {
+            "description": "Número da ficha de inventário",
+            "type": "integer",
+            "format": "int32"
+          },
+          "itemCode": {
+            "type": "string",
+            "description": "Código do item - Datasul"
+          },
+          "siteCode": {
+            "type": "string",
+            "description": "Código do Estabelecimento"
+          },
+          "wharehouseCode": {
+            "type": "string",
+            "description": "Código Depósito - Datasul"
+          },
+          "locationCode": {
+            "type": "string",
+            "description": "Código Localização - Datasul"
+          },
+          "referenceCode": {
+            "type": "string",
+            "description": "Código Referência - Datasul"
+          },
+          "lotCode": {
+            "type": "string",
+            "description": "Código do Lote - Datasul"
+          },
+          "balanceQty": {
+            "type": "number",
+            "description": "Saldo Atual - Datasul"
+          },
+          "balanceDate": {
+            "type": "string",
+            "description": "Data do saldo",
+            "format": "date",
+            "example": "01-01-2018"
+          },
+          "lastInDate": {
+            "type": "string",
+            "description": "Data da última entrada",
+            "format": "date",
+            "example": "01-01-2018"
+          },
+          "lastOutDate": {
+            "type": "string",
+            "description": "Data da última saída",
+            "format": "date",
+            "example": "01-01-2018"
+          },
+          "finalValue": {
+            "type": "number",
+            "description": "Valor Final - Datasul"
+          },
+          "accountValue": {
+            "type": "number",
+            "description": "Valor Contábil - Datasul"
+          },
+          "countedValue": {
+            "type": "number",
+            "description": "Quantidade contada durante o inventário - Datasul"
+          },
+          "numberOfCount": {
+            "type": "integer",
+            "description": "Número da contagem - Datasul",
+            "format": "int32",
+            "example": 1
+          },
+          "status": {
+            "type": "integer",
+            "description": "Situação (estado) da ficha de inventário - Datasul",
+            "format": "int32",
+            "example": 1
+          },
+          "updateDate": {dv 
+            "type": "string",
+            "description": "Data atualização",
+            "format": "date",
+            "example": "2018-01-01T00:00:00.000Z"
+          },
+          "standardMaterialValue": {
+            "type": "number",
+            "description": "Valor Material Padrão - Datasul"
+          },
+          "onlinedMaterialValue": {
+            "type": "number",
+            "description": "Valor Material Online - Datasul"
+          },
+          "batchMaterialValue": {
+            "type": "number",
+            "description": "Valor Material Mensal (Batch) - Datasul"
+          },
+          "standardLaborValue": {
+            "type": "number",
+            "description": "Valor Mão de Obra Padrão - Datasul"
+          },
+          "onlinedLaborValue": {
+            "type": "number",
+            "description": "Valor Mão de obra Online - Datasul"
+          },
+          "batchLaborValue": {
+            "type": "number",
+            "description": "Valor Mão de obra Mensal (Batch) - Datasul"
+          },
+          "standardGGFValue": {
+            "type": "number",
+            "description": "Valor GGF Padrão - Datasul"
+          },
+          "onlinedGGFValue": {
+            "type": "number",
+            "description": "Valor GGF Online - Datasul"
+          },
+          "batchGGFlValue": {
+            "type": "number",
+            "description": "Valor GGF Mensal (Batch) - Datasul"
+          },
+          "printed": {
+            "type": "boolean",
+            "description": "Indica se a ficha de inventário está impressa - Datasul"
+          },
+          "statusWMS": {
+            "type": "integer",
+            "description": "Situação (estado) da ficha de inventário WMS - Datasul",
+            "format": "int32",
+            "example": 1
+          },
+          "lectCodeCount1": {
+            "type": "string",
+            "description": "Código Conferente Primeira Contagem - Datasul"
+          },
+          "lectCodeCount2": {
+            "type": "string",
+            "description": "Código Conferente Segunda Contagem - Datasul"
+          },
+          "lectCodeCount3": {
+            "type": "string",
+            "description": "Código Conferente Terceira Contagem - Datasul"
+          },
+          "groupingCode": {
+            "type": "integer",
+            "description": "Código agrupador Inventário",
+            "format": "int32"
+          }
+        }
+      },
+      "errorModel": {
+        "type": "object",
+        "required": [
+          "code",
+          "message",
+          "detailedMessage"
+        ],
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "Código identificador do erro."
+          },
+          "message": {
+            "type": "string",
+            "description": "Literal no idioma da requisiçã descrevendo o erro para o cliente."
+          },
+          "detailedMessage": {
+            "type": "string",
+            "description": "Mensagem técnica e mais detalhada do erro."
+          },
+          "help": {
+            "type": "string",
+            "format": "uri",
+            "description": "URI para a documentação do erro."
+          }
+        }
+      }
+    }
+  }
+}
