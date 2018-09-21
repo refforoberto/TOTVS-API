@@ -1,5 +1,5 @@
 {  
-    "$schema":"https://raw.githubusercontent.com/totvs/ttalk-standard-message/master/jsonschema/schemas/events/User_1_000.json#",
+    "$schema":"https://raw.githubusercontent.com/refforoberto/TOTVS-API/InventoryCounts_2_000/InventoryCounts_2_000.json#",
     "info":{  
         "description":"Contrato de Mensagem Padronizada para Inventário de Estoque para produtos TOTVS",
         "version":"2.000",
