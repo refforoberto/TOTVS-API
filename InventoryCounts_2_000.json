@@ -48,7 +48,6 @@
         },
         "inventoryCountType":{  
             "type":"object",
-            "example":1,
             "properties":{  
                 "countingSheetNumber":{  
                     "type":"number",
@@ -87,7 +86,6 @@
                 "itemCode":{  
                     "type":"string",
                     "description":"Código do Item",
-                    "example":"item",
                     "x-totvs":[  
                         {  
                             "product":"datasul",
@@ -104,7 +102,6 @@
                 "itemDescription":{  
                     "type":"string",
                     "description":"Descrição do Item",
-                    "example":"descrição",
                     "x-totvs":[  
                         {  
                             "product":"datasul",
@@ -121,7 +118,6 @@
                 "lotOrSerialNumber":{  
                     "type":"string",
                     "description":"Código do Lote ou Número de Série do Item",
-                    "example":"lote",
                     "x-totvs":[  
                         {  
                             "product":"datasul",
@@ -138,7 +134,6 @@
                 "referenceCode":{  
                     "type":"string",
                     "description":"Código da Referência do Item",
-                    "example":"refer",
                     "x-totvs":[  
                         {  
                             "product":"datasul",
