@@ -288,7 +288,11 @@
                     "items":{  
                         "type":"number",
                         "format":"double",
-                        "example":[1, null, null]
+                        "example":[  
+                            1,
+                            null,
+                            null
+                        ]
                     },
                     "x-totvs":[  
                         {  
@@ -383,7 +387,7 @@
                         }
                     ]
                 },
-                "groupingDescription":{
+                "groupingDescription":{  
                     "type":"number",
                     "description":"Descrição do agrupador do inventário",
                     "x-totvs":[  
@@ -399,6 +403,70 @@
                         }
                     ]
                 }
+            },
+            "balanceAccounting":{  
+                "type":"number",
+                "description":"Saldo contábil",
+                "x-totvs":[  
+                    {  
+                        "product":"datasul",
+                        "available":true,
+                        "field":"inventario.valor-contab",
+                        "required":true,
+                        "length":"15",
+                        "type":"decimal",
+                        "format":"double",
+                        "note":"Saldo contábil. formato >>>>,>>>,>>9.9999"
+                    }
+                ]
+            },
+            "lectCodeCount1":{  
+                "type":"string",
+                "description":"Código Conferente Primeira Contagem ",
+                "x-totvs":[  
+                    {  
+                        "product":"datasul",
+                        "available":true,
+                        "field":" inventario.cod-confte-contag-1",
+                        "required":false,
+                        "type":"string",
+                        "length":"30",
+                        "note":"Código Conferente Primeira Contagem",
+                        "canUpdate":true
+                    }
+                ]
+            },
+            "lectCodeCount2":{  
+                "type":"string",
+                "description":"Código Conferente Segunda Contagem ",
+                "x-totvs":[  
+                    {  
+                        "product":"datasul",
+                        "available":true,
+                        "field":" inventario.cod-confte-contag-2",
+                        "required":false,
+                        "type":"string",
+                        "length":"30",
+                        "note":"Código Conferente Segunda Contagem",
+                        "canUpdate":true
+                    }
+                ]
+            },
+            "lectCodeCount3":{  
+                "type":"string",
+                "description":"Código Conferente Terceira Contagem ",
+                "x-totvs":[  
+                    {  
+                        "product":"datasul",
+                        "available":true,
+                        "field":" inventario.cod-confte-contag-3",
+                        "required":false,
+                        "type":"string",
+                        "length":"30",
+                        "note":"Código Conferente Terceira Contagem",
+                        "canUpdate":true
+                    }
+                ]
             }
         }
     }
