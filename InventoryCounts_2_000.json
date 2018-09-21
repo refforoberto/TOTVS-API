@@ -285,10 +285,10 @@
                     "description":"Quantidade contada durante o inventário",
                     "minItems":"1",
                     "maxItems":"3",
-                    "example": "2",
+                    "example":"[1, null, null]",
                     "items":{  
                         "type":"number",
-                        "format": "double"
+                        "format":"double"
                     },
                     "x-totvs":[  
                         {  
@@ -301,6 +301,63 @@
                             "format":"double",
                             "note":"Valor apurado. formato >>>>,>>>,>>9.9999. inventario.val-apurado[1..3]. Quando a quantidade ainda não foi apurada o valor padrão é ? (nulo)",
                             "canUpdate":true
+                        }
+                    ]
+                },
+                "updateDate":{  
+                    "type":"string",
+                    "description":"Data atualização",
+                    "format":"date",
+                    "example":"2018-01-01",
+                    "x-totvs":[  
+                        {  
+                            "product":"datasul",
+                            "available":true,
+                            "field":"inventario.dt-atualiza",
+                            "required":false,
+                            "type":"date",
+                            "length":"99/99/9999",
+                            "note":"Data de atualização do inventário",
+                            "canUpdate":true
+                        }
+                    ]
+                },
+                "currentQuantity":{  
+                    "type":"number",
+                    "description":"Quantidade Atual",
+                    "x-totvs":[  
+                        {  
+                            "product":"datasul",
+                            "available":true,
+                            "field":"inventario.qtidade-atu",
+                            "length":"15",
+                            "type":"decimal",
+                            "format":"double",
+                            "note":"Quantidade Atual.  ->>>>,>>>,>>9.9999"
+                        }
+                    ]
+                },
+                "printStatus":{  
+                    "type":"boolean",
+                    "description":"Status de impressão",
+                    "x-totvs":{  
+                        "product":"datasul",
+                        "available":true,
+                        "field":"inventario.impressa",
+                        "note":"Status de impressão, se a ficha já foi impressa"
+                    }
+                },
+                "situationWMS":{  
+                    "type":"number",
+                    "description":"Situação da ficha no módulo WMS",
+                    "x-totvs":[  
+                        {  
+                            "product":"datasul",
+                            "available":true,
+                            "field":"inventario.ind-sit-invent-wm",
+                            "length":"9",
+                            "format":"integer",
+                            "note":"Situação da ficha no módulo WMS"
                         }
                     ]
                 }
