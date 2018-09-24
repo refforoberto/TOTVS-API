@@ -51,8 +51,8 @@
             "properties":{  
                 "countingSheetNumber":{  
                     "type":"number",
-                    "description":"Número da ficha de inventário",                  
-                    "format": "int32",
+                    "description":"Número da ficha de inventário",
+                    "format":"int32",
                     "x-totvs":[  
                         {  
                             "product":"datasul",
@@ -261,7 +261,7 @@
                 },
                 "status":{  
                     "type":"integer",
-                    "description": "Situação (estado) da ficha de inventário \n Tipo: \n    1 - Atualizado\n    2 - Não Atualizado\n    3 - Inventário OK\n    4 - OK p/ Inventário\n",
+                    "description":"Situação (estado) da ficha de inventário \n Tipo: \n    1 - Atualizado\n    2 - Não Atualizado\n    3 - Inventário OK\n    4 - OK p/ Inventário\n",
                     "enum":[  
                         1,
                         2,
@@ -284,14 +284,14 @@
                 "countedValue":{  
                     "type":"array",
                     "description":"Quantidade contada durante o inventário",
-                    "minItems": 1,
-                    "maxItems": 3,
+                    "minItems":1,
+                    "maxItems":3,
                     "items":{  
                         "type":"number",
                         "format":"float",
-                        "maximum": 9999999999.9999,
-                        "minimum": -9999999999.9999,
-                        "multipleOf": 0.01,
+                        "maximum":9999999999.9999,
+                        "minimum":-9999999999.9999,
+                        "multipleOf":0.01,
                         "example":[  
                             1,
                             null,
@@ -330,13 +330,13 @@
                         }
                     ]
                 },
-                "currentQuantity":{
+                "currentQuantity":{  
                     "description":"Saldo Atual",
-                    "type": "number",
-                    "format": "float",
-                    "maximum": 9999999999.9999,
-                    "minimum": -9999999999.9999,
-                    "multipleOf": 0.01,
+                    "type":"number",
+                    "format":"float",
+                    "maximum":9999999999.9999,
+                    "minimum":-9999999999.9999,
+                    "multipleOf":0.01,
                     "x-totvs":[  
                         {  
                             "product":"datasul",
@@ -365,7 +365,7 @@
                 "situationWMS":{  
                     "type":"number",
                     "description":"Situação da ficha no módulo WMS",
-                    "maxLength": 1,
+                    "maxLength":1,
                     "x-totvs":[  
                         {  
                             "product":"datasul",
@@ -414,9 +414,9 @@
                 "balanceAccounting":{  
                     "type":"number",
                     "description":"Saldo contábil",
-                    "maximum": 9999999999.9999,
-                    "minimum": -9999999999.9999,
-                    "multipleOf": 0.01,
+                    "maximum":9999999999.9999,
+                    "minimum":-9999999999.9999,
+                    "multipleOf":0.01,
                     "x-totvs":[  
                         {  
                             "product":"datasul",
@@ -479,15 +479,14 @@
                     ]
                 }
             }
-        },    
-        "inventoryCountInfo": {
+        },
+        "inventoryCountInfo":{  
             "type":"object",
-            "properties":{ 
-            
+            "properties":{  
                 "countingSheetNumber":{  
                     "type":"number",
                     "description":"Número da ficha de inventário",
-                    "format": "int32",
+                    "format":"int32",
                     "x-totvs":[  
                         {  
                             "product":"datasul",
@@ -614,13 +613,13 @@
                         }
                     ]
                 },
-                "countedValue":{
+                "countedValue":{  
                     "type":"number",
                     "description":"Quantidade contada durante o inventário",
                     "format":"float",
-                    "maximum": 9999999999.9999,
-                    "minimum": -9999999999.9999,
-                    "multipleOf": 0.01,
+                    "maximum":9999999999.9999,
+                    "minimum":-9999999999.9999,
+                    "multipleOf":0.01,
                     "x-totvs":[  
                         {  
                             "product":"datasul",
@@ -651,7 +650,7 @@
                         }
                     ]
                 },
-                "lecturerUser": {
+                "lecturerUser":{  
                     "type":"string",
                     "description":"Código Conferente Primeira Contagem ",
                     "x-totvs":[  
@@ -663,6 +662,79 @@
                             "type":"string",
                             "length":"30",
                             "note":"Código Conferente Primeira Contagem",
+                            "canUpdate":true
+                        }
+                    ]
+                }
+            }
+        },
+        "updateParams":{  
+            "type":"object",
+            "properties":{  
+                "inventoryDate":{  
+                    "type":"string",
+                    "format":"date",
+                    "description":"Data de inventário",
+                    "example":"2018-01-01",
+                    "x-totvs":[  
+                        {  
+                            "product":"datasul",
+                            "available":true,
+                            "field":"inventario.dt-saldo",
+                            "required":true,
+                            "type":"date",
+                            "length":"99/99/9999",
+                            "note":"Data de corte do inventário",
+                            "canUpdate":false
+                        }
+                    ]
+                },
+                "countingSheetNumber":{  
+                    "type":"number",
+                    "description":"Número da ficha de inventário",
+                    "format":"int32",
+                    "x-totvs":[  
+                        {  
+                            "product":"datasul",
+                            "available":true,
+                            "field":"inventario.nr-ficha",
+                            "required":true,
+                            "length":"7",
+                            "type":"integer",
+                            "note":"Número da ficha de inventário | formato >>>>,>>9. Número sequencial por data de inventario",
+                            "canUpdate":false
+                        }
+                    ]
+                },
+                "numOfCount":{  
+                    "type":"number",
+                    "description":"Número da contagem de invetário",
+                    "maximum":1,
+                    "minimum":3,
+                    "x-totvs":[  
+                        {  
+                            "product":"datasul",
+                            "note":"Campo indicador da contagem do inventário. Com base nessa informação será atualizado o campo inventario.val-apurado[numOfCount]"
+                        }
+                    ]
+                },
+                "countedValue":{  
+                    "type":"number",
+                    "description":"Quantidade contada durante o inventário",
+                    "format":"float",
+                    "maximum":9999999999.9999,
+                    "minimum":-9999999999.9999,
+                    "multipleOf":0.01,
+                    "x-totvs":[  
+                        {  
+                            "product":"datasul",
+                            "available":true,
+                            "field":"inventario.val-apurado[1]",
+                            "required":false,
+                            "length":"14",
+                            "type":"decimal",
+                            "format":"float",
+                            "note":"Valor apurado. formato >>>>,>>>,>>9.9999. inventario.val-apurado[1].",
                             "canUpdate":true
                         }
                     ]
