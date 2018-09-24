@@ -430,7 +430,7 @@
                         }
                     ]
                 },
-                "lectCodeCount1":{  
+                "lecturerUser1":{  
                     "type":"string",
                     "description":"Código Conferente Primeira Contagem ",
                     "x-totvs":[  
@@ -446,7 +446,7 @@
                         }
                     ]
                 },
-                "lectCodeCount2":{  
+                "lecturerUser2":{  
                     "type":"string",
                     "description":"Código Conferente Segunda Contagem ",
                     "x-totvs":[  
@@ -462,7 +462,7 @@
                         }
                     ]
                 },
-                "lectCodeCount3":{  
+                "lecturerUser3":{  
                     "type":"string",
                     "description":"Código Conferente Terceira Contagem ",
                     "x-totvs":[  
@@ -474,6 +474,195 @@
                             "type":"string",
                             "length":"30",
                             "note":"Código Conferente Terceira Contagem",
+                            "canUpdate":true
+                        }
+                    ]
+                }
+            }
+        },    
+        "inventoryCountInfo": {
+            "type":"object",
+            "properties":{ 
+            
+                "countingSheetNumber":{  
+                    "type":"number",
+                    "description":"Número da ficha de inventário",
+                    "format": "int32",
+                    "x-totvs":[  
+                        {  
+                            "product":"datasul",
+                            "available":true,
+                            "field":"inventario.nr-ficha",
+                            "required":true,
+                            "length":"7",
+                            "type":"integer",
+                            "note":"Número da ficha de inventário | formato >>>>,>>9. Número sequencial por data de inventario",
+                            "canUpdate":false
+                        }
+                    ]
+                },
+                "warehouseCode":{  
+                    "type":"string",
+                    "description":"Código do Depósito",
+                    "x-totvs":[  
+                        {  
+                            "product":"datasul",
+                            "available":true,
+                            "field":"inventario.cod-depos",
+                            "required":true,
+                            "type":"string",
+                            "length":"3",
+                            "note":"Código do depósito",
+                            "canUpdate":false
+                        }
+                    ]
+                },
+                "branchId":{  
+                    "type":"string",
+                    "description":"Código da Filial",
+                    "x-totvs":[  
+                        {  
+                            "product":"datasul",
+                            "available":true,
+                            "field":"inventario.cod-estabel",
+                            "required":true,
+                            "type":"string",
+                            "length":"5",
+                            "note":"Código Estabelecimento"
+                        }
+                    ]
+                },
+                "locationCode":{  
+                    "type":"string",
+                    "description":"Código da localização do material",
+                    "x-totvs":[  
+                        {  
+                            "product":"datasul",
+                            "available":true,
+                            "field":"inventario.cod-localiz",
+                            "required":false,
+                            "type":"string",
+                            "length":"10",
+                            "note":"Código da localização do material",
+                            "canUpdate":false
+                        }
+                    ]
+                },
+                "referenceCode":{  
+                    "type":"string",
+                    "description":"Código da Referência do Item",
+                    "x-totvs":[  
+                        {  
+                            "product":"datasul",
+                            "available":true,
+                            "field":"inventario.cod-refer",
+                            "required":false,
+                            "type":"string",
+                            "length":"8",
+                            "note":"Código da Referência do Item",
+                            "canUpdate":false
+                        }
+                    ]
+                },
+                "inventoryDate":{  
+                    "type":"string",
+                    "format":"date",
+                    "description":"Data de inventário",
+                    "example":"2018-01-01",
+                    "x-totvs":[  
+                        {  
+                            "product":"datasul",
+                            "available":true,
+                            "field":"inventario.dt-saldo",
+                            "required":true,
+                            "type":"date",
+                            "length":"99/99/9999",
+                            "note":"Data de corte do inventário",
+                            "canUpdate":false
+                        }
+                    ]
+                },
+                "itemCode":{  
+                    "type":"string",
+                    "description":"Código do Item",
+                    "x-totvs":[  
+                        {  
+                            "product":"datasul",
+                            "available":true,
+                            "field":"inventario.it-codigo",
+                            "required":true,
+                            "type":"string",
+                            "length":"16",
+                            "note":"Código do Item",
+                            "canUpdate":false
+                        }
+                    ]
+                },
+                "lotOrSerialNumber":{  
+                    "type":"string",
+                    "description":"Código do Lote ou Número de Série do Item",
+                    "x-totvs":[  
+                        {  
+                            "product":"datasul",
+                            "available":true,
+                            "field":"inventario.lote",
+                            "required":false,
+                            "type":"string",
+                            "length":"40",
+                            "note":"Número do lote ou número de série do item. Elemento obigatório para itens controlados por lote, referencia ou número de série.",
+                            "canUpdate":false
+                        }
+                    ]
+                },
+                "countedValue":{
+                    "type":"number",
+                    "description":"Quantidade contada durante o inventário",
+                    "format":"float",
+                    "maximum": 9999999999.9999,
+                    "minimum": -9999999999.9999,
+                    "multipleOf": 0.01,
+                    "x-totvs":[  
+                        {  
+                            "product":"datasul",
+                            "available":true,
+                            "field":"inventario.val-apurado[1]",
+                            "required":false,
+                            "length":"14",
+                            "type":"decimal",
+                            "format":"float",
+                            "note":"Valor apurado. formato >>>>,>>>,>>9.9999. inventario.val-apurado[1].",
+                            "canUpdate":true
+                        }
+                    ]
+                },
+                "groupingCode":{  
+                    "type":"number",
+                    "description":"Código do agrupador do inventário",
+                    "x-totvs":[  
+                        {  
+                            "product":"datasul",
+                            "available":true,
+                            "field":"inventario.cdn-agrup",
+                            "required":false,
+                            "type":"integer",
+                            "length":"9",
+                            "note":"Código do Agrupador - Formato: >>>,>>>,>>9",
+                            "canUpdate":false
+                        }
+                    ]
+                },
+                "lecturerUser": {
+                    "type":"string",
+                    "description":"Código Conferente Primeira Contagem ",
+                    "x-totvs":[  
+                        {  
+                            "product":"datasul",
+                            "available":true,
+                            "field":" inventario.cod-confte-contag-1",
+                            "required":false,
+                            "type":"string",
+                            "length":"30",
+                            "note":"Código Conferente Primeira Contagem",
                             "canUpdate":true
                         }
                     ]
